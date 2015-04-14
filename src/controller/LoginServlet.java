@@ -49,14 +49,14 @@ public class LoginServlet extends HttpServlet {
 		session.setAttribute("errors", errors);
 		User user = new User();
 		
-
+		application.LoginData.logout();
 
 		//get the form values
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
 		
-	
+		
 		
 		//null check
 		if(username==null)
@@ -95,6 +95,8 @@ public class LoginServlet extends HttpServlet {
 			errors.clear();
 			session.setAttribute("user", user);
 			session.setAttribute("loggedIn", "true");
+			application.LoginData.login(user);
+			
 		}
 		else
 		{
@@ -122,7 +124,7 @@ public class LoginServlet extends HttpServlet {
 			System.out.println(ex.getMessage());
 		}
 		
-		session.invalidate();
+		
 		
 	}
 

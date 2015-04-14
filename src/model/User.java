@@ -37,6 +37,11 @@ public class User implements Serializable {
 		this.userId = -1;
 	}
 	
+
+	public String getFullName()
+	{
+		return (this.getFirstName() + " " + this.getLastName());
+	}
 	
 	public boolean isEmpty()
 	{

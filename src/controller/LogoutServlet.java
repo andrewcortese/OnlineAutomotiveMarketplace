@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import application.LoginData;
+import application.SessionData;
+
 /**
  * Servlet implementation class LogoutServlet
  */
@@ -35,6 +38,9 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		LoginData.logout();
+		SessionData.end();
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
 		dispatcher.forward(request, response);

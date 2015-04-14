@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@ page import="model.*" %>
+     <%@ page import="application.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,41 +11,25 @@
 <body>
 <h2>Welcome</h2><br><br>
 <%
+	session = SessionData.getOrStartSession(session);
+	boolean loggedIn = false;
+	User user = new User();
 	
-	String name = (String)session.getAttribute("name");
-	String loggedIn = (String)session.getAttribute("loggedIn");
-	User user = (User)session.getAttribute("user");
-	
-	if(loggedIn == null || loggedIn.isEmpty())
+	if(LoginData.isLoggedIn())
 	{
-		loggedIn = "false";
-	}
-	if(user == null || user.isEmpty())
-	{
-		loggedIn = "false";
-		user = new User();
-	}
-	if(name == null || name.isEmpty())
-	{
-		name = "NAME NOT FOUND";
+		loggedIn = true;
+		 user = LoginData.getCurrentUser();
 	}
 	
-	
-	System.out.println(loggedIn);
+
 	//if loggedIn==true, display the name
-	if(loggedIn.equals("true"))
+	if(loggedIn  == true)
 	{
 %>
-		<p style="color:green">
-		Currently logged in as:<br> 
-			<b><%=user.getFirstName() + " " + user.getLastName() %></b><br>
-		Username:
-			<b><%=user.getUsername() %></b>
-		
-		</p><br><br>
-		<form method="post" action="logoutservlet">
-		<input type="submit" value="Logout"/>
-		</form>
+		<jsp:include page="greetLoggedIn.jsp">
+			<jsp:param value="${user.getFullName() }" name="fullname"/>
+			<jsp:param value="${user.getUsername() }" name="username"/>
+		</jsp:include>
 <% 	
 	}
 	else
