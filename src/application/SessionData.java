@@ -19,7 +19,7 @@ public class SessionData {
 	{
 		if(isActive() && currentSession != null)
 		{
-			try
+			/*try
 			{
 				currentSession.invalidate();
 			}
@@ -27,7 +27,7 @@ public class SessionData {
 			{
 				System.err.println("Attempted to invalidate an already invalidated session. Enforcing idempotence.");
 			}
-			currentSession = null;
+			currentSession = null;*/
 			active = false;
 		}
 	}
