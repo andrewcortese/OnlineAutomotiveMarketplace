@@ -18,4 +18,4 @@
         <li><a href="details.html" class="nav">Details</a></li>
       </ul>
     </div>
-<div class="crumb_navigation"> Navigation: <span class="current">Home</span> </div>
+<div class="crumb_navigation"> Navigation: <span class="current"></span> </div>

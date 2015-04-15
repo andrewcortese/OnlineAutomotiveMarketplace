@@ -10,6 +10,6 @@
 		
 		<div class="center_content"  style="background-color:white">
 		
-		<div class="center_title_bar">Home</div>
+		<div class="center_title_bar">Page Name</div>
       	<div class="prod_box_big">
         <div class="center_prod_box_big">

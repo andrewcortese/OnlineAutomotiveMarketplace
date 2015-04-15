@@ -7,10 +7,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/style.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+
+<jsp:include page="template_top.jsp"/>
 
 <%
 	session = SessionData.getOrStartSession(session);
@@ -26,21 +29,26 @@
 	if(loggedIn == false)
 	{
 %>	
-		<h3>Log In:</h3>
-		<form method="post" action="loginservlet">
-			<table>
-			<colgroup span="2" ></colgroup>
-				<tr>
-					<td>Username:</td>
-					<td><input name="username" type="text"></input></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
-					<td> <input name="password" type="password"></input></td>
-				</tr>
-			</table>
-		<input type="submit" value="Log In" />
-		</form>
+		
+      	
+        <div class="contact_form">
+			<h3>Log In:</h3>
+			<form method="post" action="loginservlet">
+				<table>
+				<colgroup span="2" ></colgroup>
+					<tr>
+						<td><label class="contact">Username:</label></td>
+						<td><input name="username" type="text" class="contact_input"></input></td>
+					</tr>
+					<tr>
+						<td><label class="contact">Password:</label></td>
+						<td> <input name="password" type="password" class="contact_input"></input></td>
+					</tr>
+				</table>
+			<input type="submit" value="Log In" />
+			</form>
+		</div>
+			
 		
 		
 		<p style="color:red">
@@ -79,7 +87,7 @@
 </p>
 <br>
 <br>
-<form method="post" action="logoutservlet">
+<form class="contact_form" method="post" action="logoutservlet">
 	<input type="submit" value="Logout"/>
 </form>
 	
@@ -88,6 +96,8 @@
 %>
 
 <br><br>
-<a href="index.jsp">Return to Homepage</a>
+
+
+<jsp:include page="template_bottom.jsp"/>
 </body>
 </html>

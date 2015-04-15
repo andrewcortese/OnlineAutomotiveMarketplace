@@ -10,15 +10,16 @@
 
 <head>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css" />
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
 <title>Insert title here</title>
 </head>
 <body>
 
 	<jsp:include page="template_top.jsp" />
 	
+		<div id="index-content">
 
-		<h2>Welcome</h2><br><br>
+		<h2>Welcome</h2><br/><br/>
 		<%
 			session = SessionData.getOrStartSession(session);
 			boolean loggedIn = false;
@@ -71,14 +72,7 @@
 				signedUp = "false";
 			}
 		%>
-		</div></div></div>
-		<!-- end of center content -->
-		<jsp:include page="rightcontent.jsp"></jsp:include>
-		
-	</div>
-	<!-- end of main content -->
-	<jsp:include page="footer.jsp"></jsp:include>
-</div>
-<!-- end of main_container -->
+		</div>
+		<jsp:include page="template_bottom.jsp" />
 </body>
 </html>

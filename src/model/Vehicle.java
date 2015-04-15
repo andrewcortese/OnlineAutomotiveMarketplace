@@ -1,15 +1,20 @@
 package model;
 
 public class Vehicle {
+	
 	int id;
 	String make;
 	String model;
 	int year;
 	int mileage;
 	VehicleStyle style;
+	double price;
+	int sellerID;
+	RatingList ratings;
 	
 	
-	public Vehicle(int id, String make, String model, int year, int mileage, VehicleStyle style) {
+	
+	public Vehicle(int id, String make, String model, int year, int mileage, VehicleStyle style, double price, int sellerID, RatingList ratings) {
 		super();
 		this.id = id;
 		this.make = make;
@@ -17,7 +22,25 @@ public class Vehicle {
 		this.year = year;
 		this.mileage = mileage;
 		this.style = style;
+		this.price = price;
+		this.sellerID = sellerID;
+		this.ratings = ratings;
 	}
+	
+	public Vehicle(int id, String make, String model, int year, int mileage, VehicleStyle style, double price, int sellerID) {
+		super();
+		this.id = id;
+		this.make = make;
+		this.model = model;
+		this.year = year;
+		this.mileage = mileage;
+		this.style = style;
+		this.price = price;
+		this.sellerID = sellerID;
+		this.ratings = new RatingList();
+	}
+	
+	
 	
 	public Vehicle()
 	{
@@ -28,25 +51,13 @@ public class Vehicle {
 		this.year = -1;
 		this.mileage = -1;
 		this.style = null;
+		this.price = -1;
+		this.sellerID = -1;
+		this.ratings = new RatingList();
+		
 	}
 	
-	public boolean isEmpty()
-	{
-		if(id==-1 && 
-		   make.isEmpty() && 
-		   model.isEmpty() && 
-		   year == -1 && 
-		   mileage == -1 && 
-		   style == null)
-		{
-			return true;
-		}
-		
-		else
-		{
-			return false;
-		}
-	}
+	
 
 
 	/**
@@ -142,6 +153,48 @@ public class Vehicle {
 	 */
 	public void setStyle(VehicleStyle style) {
 		this.style = style;
+	}
+
+	/**
+	 * @return the price
+	 */
+	public double getPrice() {
+		return price;
+	}
+
+	/**
+	 * @param price the price to set
+	 */
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	/**
+	 * @return the sellerID
+	 */
+	public int getSellerID() {
+		return sellerID;
+	}
+
+	/**
+	 * @param sellerID the sellerID to set
+	 */
+	public void setSellerID(int sellerID) {
+		this.sellerID = sellerID;
+	}
+
+	/**
+	 * @return the ratings
+	 */
+	public RatingList getRatings() {
+		return ratings;
+	}
+
+	/**
+	 * @param ratings the ratings to set
+	 */
+	public void setRatings(RatingList ratings) {
+		this.ratings = ratings;
 	}
 	
 	
