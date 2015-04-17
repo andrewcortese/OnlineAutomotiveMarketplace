@@ -168,7 +168,7 @@ public class SignupServlet extends HttpServlet {
 			System.out.println(ex.getMessage());
 		}
 		
-		session.invalidate();
+		
 	}
 
 }
