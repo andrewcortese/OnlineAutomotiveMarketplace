@@ -52,8 +52,9 @@ width:728px;
 float:right;
 }
 .big_banner{
-float:right;
+float:center;
 padding:10px 10px 0 0;
+width:100px;
 }
 /*---------------- menu tab----------------------*/
 #menu_tab{

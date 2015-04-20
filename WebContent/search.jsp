@@ -13,9 +13,9 @@
 </head>
 <body>
 <jsp:include page="template_top.jsp" ><jsp:param value="Search" name="pageName"/></jsp:include>
-<h3>Sign Up:</h3>
+<h3>Search:</h3>
 		<div class="contact_form">
-		<form method="post" action="signupservlet">
+		<form method="post" action="#">
 			<table>
 			<colgroup span="2" ></colgroup>
 				<tr>
