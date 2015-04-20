@@ -15,10 +15,10 @@
 </head>
 <body>
 
-	<jsp:include page="template_top.jsp" />
+	<jsp:include page="template_top.jsp" ><jsp:param value="Home" name="pageName"/></jsp:include>
 	
 		<div id="index-content">
-
+		
 		<h2>Welcome</h2><br/><br/>
 		<%
 			session = SessionData.getOrStartSession(session);
@@ -40,6 +40,8 @@
 					<jsp:param value="${user.getFullName() }" name="fullname"/>
 					<jsp:param value="${user.getUsername() }" name="username"/>
 				</jsp:include>
+				
+				Your account type is: <%=user.getAccountType().toString() %>
 		<% 	
 			}
 			else

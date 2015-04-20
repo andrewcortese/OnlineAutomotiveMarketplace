@@ -12,52 +12,46 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="template_top.jsp" ><jsp:param value="Log In" name="pageName"/></jsp:include>
-<%
-	User currentUser = new User();
-	boolean isLoggedIn = false;
-
-	if(LoginData.isLoggedIn())
-	{
-		currentUser = LoginData.getCurrentUser();
-		isLoggedIn = true;
-	}
-	
-	
-	
-	
-
-	
-
-	
-	
-	//if we're not logged in, display the form.
-	if(isLoggedIn == false)
-	{
-%>	
-		<h3>Sign Up:</h3>
+<jsp:include page="template_top.jsp" ><jsp:param value="Search" name="pageName"/></jsp:include>
+<h3>Sign Up:</h3>
 		<div class="contact_form">
 		<form method="post" action="signupservlet">
 			<table>
 			<colgroup span="2" ></colgroup>
 				<tr>
-					<td><label class="contact">Username:</label></td>
+					<td><label class="contact">Make:</label></td>
 					<td><input name="username" type="text" class="contact_input"></input></td>
 				</tr>
 				<tr>
-					<td><label class="contact">First Name:</label></td>
+					<td><label class="contact">Model:</label></td>
 					<td><input name="firstName" type="text" class="contact_input"></input></td>
 				</tr>
 				<tr>
-					<td><label class="contact">Last Name:</label></td>
-					<td><input name="lastName" type="text" class="contact_input"></input></td>
+					<td><label class="contact">Style:</label></td>
+					<td><select class="contact_input" name="dropdown">
+							<option value="Sedan">Sedan</option>
+							<option value="Coup">Coup</option>
+							<option value="SUV"> SUV</option>
+							<option value="Truck">Truck</option>
+							<option value="Convertible">Convertible</option>
+							<option value="Minivan">Minivan</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
-					<td><label class="contact">Password:</label></td>
+					<td><label class="contact">Year</label></td>
 					<td> <input name="password" type="password" class="contact_input"></input></td>
 				</tr>
 				<tr>	
-					<td><label class="contact">Confirm:</label></td>
+					<td><label class="contact">Mileage</label></td>
+					<td> <input name="confirmPassword" type="password" class="contact_input"></input></td>
+				</tr>
+				<tr>	
+					<td><label class="contact">Price</label></td>
+					<td> <input name="confirmPassword" type="password" class="contact_input"></input></td>
+				</tr>
+				<tr>	
+					<td><label class="contact">Seller</label></td>
 					<td> <input name="confirmPassword" type="password" class="contact_input"></input></td>
 				</tr>
 				<tr>	
@@ -65,10 +59,10 @@
 			</tr>
 			<tr>
 			<td colspan="2">
-		<input type="submit" value="Sign Up" />
+		<input type="submit" value="Search" />
 		</td>
 	</tr>
-		<br><br>
+		
 		
 		
 		
@@ -91,34 +85,11 @@
 			}
 		}
 %>
-		</p>
-<%
-	}
-	
-	//otherwise, display username
-	else if(isLoggedIn == true)
-	{
-		String un = currentUser.getUsername();
-		String fn = currentUser.getFullName();
-%>	
-		<p style="color:green">
-		Currently logged in as:<br> 
-		<b><%=fn %></b><br>
-		Username:
-		<b><%=un %></b>	
-</p>
-<br>
-<br>
-<form method="post" action="logoutservlet">
-	<input type="submit" value="Logout"/>
+
+
+</table>
 </form>
-	
-<%
-	}
-%>
-	</table>
-		</form>
-		</div>
+</div>
 	<jsp:include page="template_bottom.jsp" />
 	
 </body>
