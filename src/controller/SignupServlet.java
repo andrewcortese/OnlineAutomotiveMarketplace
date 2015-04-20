@@ -40,14 +40,14 @@ public class SignupServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String targetURL = "/login.jsp";
-		HttpSession session = request.getSession();
+		String targetURL = "/signup.jsp";
+	
 		
 		
 		
 		ArrayList<String> errors = new ArrayList<String>();
 		
-		session.setAttribute("errors", errors);
+
 		//User user = new User();
 		
 
@@ -133,27 +133,26 @@ public class SignupServlet extends HttpServlet {
 				AuthDAO.enterNewUser(username, password);
 				int id = AuthDAO.getUserId(username);
 				AuthDAO.enterUserName(id, firstName, lastName);
-				targetURL = "/index.jsp";
+				targetURL = "/signup.jsp";
 				errors.clear();
-				//session.setAttribute("user", user);
-				session.setAttribute("signedUp", "true");
+				application.SignupData.setSuccess(true);
 			}
 			else
 			{
 				errors.add("Passwords do not match");
-				session.setAttribute("signedUp", "false");
+				application.SignupData.setSuccess(false);
 				targetURL = "/signup.jsp";
 			}
 		}
 		else
 		{
-			session.setAttribute("signedUp", "false");
+			application.SignupData.setSuccess(false);
 			targetURL = "/signup.jsp";
 		}
 	
 		
 		
-		
+		application.Errors.setSignupErrors(errors);
 		
 		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(targetURL);

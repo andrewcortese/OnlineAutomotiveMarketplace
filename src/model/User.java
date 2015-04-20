@@ -22,6 +22,7 @@ public class User implements Serializable {
 	private String firstName;
 	private String lastName;
 	private int userId;
+	private AccountType accountType;
 	
 	
 	
@@ -35,6 +36,7 @@ public class User implements Serializable {
 		this.firstName = new String();
 		this.lastName = new String();
 		this.userId = -1;
+		this.accountType = AccountType.Buyer;
 	}
 	
 
@@ -130,5 +132,21 @@ public class User implements Serializable {
 	 */
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+
+	/**
+	 * @return the accountType
+	 */
+	public AccountType getAccountType() {
+		return accountType;
+	}
+
+
+	/**
+	 * @param accountType the accountType to set
+	 */
+	public void setAccountType(AccountType accountType) {
+		this.accountType = accountType;
 	}
 }

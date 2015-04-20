@@ -216,6 +216,24 @@ public class AuthDAO {
 				user.setUsername(rs1.getString("username"));
 				user.setPassword(rs1.getString("password"));
 				user.setUserId(userId);
+				String acctType = rs2.getString("accountType");
+				if(acctType == null || acctType.equalsIgnoreCase("buyer"))
+				{
+					user.setAccountType(AccountType.Buyer);
+				}
+				else if(acctType.equalsIgnoreCase("seller"))
+				{
+					user.setAccountType(AccountType.Seller);
+				}
+				else if(acctType.equalsIgnoreCase("admin"))
+				{
+					user.setAccountType(AccountType.Admin);
+				}
+				else
+				{
+					user.setAccountType(AccountType.Buyer);
+				}
+
 			}
 		}
 		catch(Exception ex)

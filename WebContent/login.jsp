@@ -13,10 +13,10 @@
 </head>
 <body>
 
-<jsp:include page="template_top.jsp"/>
+<jsp:include page="template_top.jsp" ><jsp:param value="Log In" name="pageName"/></jsp:include>
 
 <%
-	session = SessionData.getOrStartSession(session);
+
 	boolean loggedIn = false;
 	User currentUser = new User();
 	if(LoginData.isLoggedIn())
@@ -44,18 +44,18 @@
 						<td><label class="contact">Password:</label></td>
 						<td> <input name="password" type="password" class="contact_input"></input></td>
 					</tr>
-				</table>
-			<input type="submit" value="Log In" />
-			</form>
-		</div>
+					<tr>
+						<td colspan ="2"><input type="submit" value="Log In" /></td>
+					</tr>
+				
 			
 		
 		
-		<p style="color:red">
+		
 <%
 		//get the list of errors (if any)
 	    
-		ArrayList<String> errors = (ArrayList<String>)session.getAttribute("errors");
+		ArrayList<String> errors = Errors.getLoginErrors();
 		
 		//if there are errors, display them
 		if(errors != null && 
@@ -64,12 +64,14 @@
 			for(String error : errors)
 			{
 %>
-				<%=error %><br>
+				<tr>
+						<td colspan ="2"><label style="color:red"><%=error %></label></td>
+				</tr>
 <% 
 			}
 		}
 %>
-		</p>
+		
 <%
 	}
 	
@@ -79,12 +81,15 @@
 		String un = currentUser.getUsername();
 		String fn = currentUser.getFullName();
 %>	
+	
+		
 		<p style="color:green">
 		Currently logged in as:<br> 
 		<b><%=fn %></b><br>
 		Username:
 		<b><%=un %></b>	
-</p>
+		</p>
+
 <br>
 <br>
 <form class="contact_form" method="post" action="logoutservlet">
@@ -94,7 +99,10 @@
 <%
 	}
 %>
-
+</table>
+			
+			</form>
+		</div>
 <br><br>
 
 

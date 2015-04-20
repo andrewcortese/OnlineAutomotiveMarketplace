@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 		
 		ArrayList<String> errors = new ArrayList<String>();
 		
-		session.setAttribute("errors", errors);
+		
 		User user = new User();
 		
 		application.LoginData.logout();
@@ -108,6 +108,7 @@ public class LoginServlet extends HttpServlet {
 		}
 	
 		
+		application.Errors.setLoginErrors(errors);
 		
 		
 		
