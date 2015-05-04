@@ -1,11 +1,56 @@
 package application;
 
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
+
+import model.Vehicle;
 
 public class SessionData {
 
 	private static HttpSession currentSession;
 	private static boolean active;
+	
+	private static Vehicle selectedProduct;
+	
+	
+	
+	/**
+	 * @return the selectedProduct
+	 */
+	public static Vehicle getSelectedProduct() {
+		return selectedProduct;
+	}
+
+	/**
+	 * @param selectedProduct the selectedProduct to set
+	 */
+	public static void setSelectedProduct(Vehicle selectedProduct) {
+		SessionData.selectedProduct = selectedProduct;
+	}
+
+	
+	
+	private static Map<String, Object> attributes = new HashMap<String, Object>();
+	
+	public static void setAttribute(String key, Object value)
+	{
+		SessionData.attributes.put(key, value);
+	}
+	
+	public static Object getAttribute(String key)
+	{
+		return attributes.get(key);
+	}
+	
+	public static void setStringAttribute(String key, String value)
+	{
+		SessionData.setAttribute(key, ((Object)value));
+	}
+	
+	
 	
 	public static HttpSession start(HttpSession session)
 	{

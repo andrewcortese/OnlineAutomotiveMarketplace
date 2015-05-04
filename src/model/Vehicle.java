@@ -1,5 +1,5 @@
 package model;
-
+import utilities.*;
 public class Vehicle {
 	
 	int id;
@@ -11,7 +11,9 @@ public class Vehicle {
 	double price;
 	int sellerID;
 	RatingList ratings;
-	
+	String description;
+	String photoURL;
+	String seller;
 	
 	
 	public Vehicle(int id, String make, String model, int year, int mileage, VehicleStyle style, double price, int sellerID, RatingList ratings) {
@@ -50,7 +52,7 @@ public class Vehicle {
 		this.model = new String(); 
 		this.year = -1;
 		this.mileage = -1;
-		this.style = null;
+		this.style = VehicleStyle.Sedan;
 		this.price = -1;
 		this.sellerID = -1;
 		this.ratings = new RatingList();
@@ -88,7 +90,7 @@ public class Vehicle {
 	 * @param make the make to set
 	 */
 	public void setMake(String make) {
-		this.make = make;
+		this.make = StringUtility.toTitleCase(make);
 	}
 	
 	
@@ -104,7 +106,7 @@ public class Vehicle {
 	 * @param model the model to set
 	 */
 	public void setModel(String model) {
-		this.model = model;
+		this.model = StringUtility.toTitleCase(model);
 	}
 	
 	
@@ -154,6 +156,20 @@ public class Vehicle {
 	public void setStyle(VehicleStyle style) {
 		this.style = style;
 	}
+	
+	public void setStyle(String style)
+	{
+		this.style = VehicleStyle.Other;
+		for(VehicleStyle s : VehicleStyle.values())
+		{
+			if(style.equals(s.toString()))
+			{
+				this.style = s;
+			}
+		}
+		
+	
+	}
 
 	/**
 	 * @return the price
@@ -195,6 +211,48 @@ public class Vehicle {
 	 */
 	public void setRatings(RatingList ratings) {
 		this.ratings = ratings;
+	}
+
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	/**
+	 * @return the photoURL
+	 */
+	public String getPhotoURL() {
+		return photoURL;
+	}
+
+	/**
+	 * @param photoURL the photoURL to set
+	 */
+	public void setPhotoURL(String photoURL) {
+		this.photoURL = photoURL;
+	}
+
+	/**
+	 * @return the seller
+	 */
+	public String getSeller() {
+		return seller;
+	}
+
+	/**
+	 * @param seller the seller to set
+	 */
+	public void setSeller(String seller) {
+		this.seller = seller;
 	}
 	
 	

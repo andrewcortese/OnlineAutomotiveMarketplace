@@ -7,4 +7,5 @@ public enum VehicleStyle {
 	Convertible,
 	Truck,
 	Minivan,
+	Other,
 }

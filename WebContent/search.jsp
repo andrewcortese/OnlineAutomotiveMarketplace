@@ -15,20 +15,22 @@
 <jsp:include page="template_top.jsp" ><jsp:param value="Search" name="pageName"/></jsp:include>
 <h3>Search:</h3>
 		<div class="contact_form">
-		<form method="post" action="#">
+		<form method="post" action="searchservlet">
 			<table>
 			<colgroup span="2" ></colgroup>
 				<tr>
 					<td><label class="contact">Make:</label></td>
-					<td><input name="username" type="text" class="contact_input"></input></td>
+					<td><input name="make" type="text" class="contact_input"></input></td>
 				</tr>
 				<tr>
 					<td><label class="contact">Model:</label></td>
-					<td><input name="firstName" type="text" class="contact_input"></input></td>
+					<td><input name="model" type="text" class="contact_input"></input></td>
 				</tr>
 				<tr>
 					<td><label class="contact">Style:</label></td>
-					<td><select class="contact_input" name="dropdown">
+					<td>
+					<select style="width:100%" class="contact_input" name="style">
+							<option value="any">Any Style</option>
 							<option value="Sedan">Sedan</option>
 							<option value="Coup">Coup</option>
 							<option value="SUV"> SUV</option>
@@ -40,7 +42,21 @@
 				</tr>
 				<tr>
 					<td><label class="contact">Year</label></td>
-					<td> <input name="password" type="password" class="contact_input"></input></td>
+					<td> 
+						<select name="year" class="contact_input" style="width:100%">
+									<option value="any">Any Year</option>
+							<%
+							for(int i=1900; i<2020; i++)
+							{
+								%>
+									<option value="${i}"><%=i%></option>
+							<%
+							}
+							%>
+							
+						</select>
+				
+					</td>
 				</tr>
 				<tr>	
 					<td><label class="contact">Mileage</label></td>

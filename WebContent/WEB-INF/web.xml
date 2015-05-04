@@ -39,4 +39,14 @@
     <servlet-name>SignupServlet</servlet-name>
     <url-pattern>/signupservlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchServlet</display-name>
+    <servlet-name>SearchServlet</servlet-name>
+    <servlet-class>controller.SearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchServlet</servlet-name>
+    <url-pattern>/searchservlet</url-pattern>
+  </servlet-mapping>
 </web-app>
