@@ -49,4 +49,14 @@
     <servlet-name>SearchServlet</servlet-name>
     <url-pattern>/searchservlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CartServlet</display-name>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>controller.CartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/cartservlet</url-pattern>
+  </servlet-mapping>
 </web-app>

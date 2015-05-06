@@ -23,6 +23,7 @@ public class User implements Serializable {
 	private String lastName;
 	private int userId;
 	private AccountType accountType;
+	private String email;
 	
 	
 	
@@ -37,6 +38,7 @@ public class User implements Serializable {
 		this.lastName = new String();
 		this.userId = -1;
 		this.accountType = AccountType.Buyer;
+		this.email = "None@None.com";
 	}
 	
 
@@ -148,5 +150,21 @@ public class User implements Serializable {
 	 */
 	public void setAccountType(AccountType accountType) {
 		this.accountType = accountType;
+	}
+
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

@@ -233,7 +233,8 @@ public class AuthDAO {
 				{
 					user.setAccountType(AccountType.Buyer);
 				}
-
+				user.setEmail(rs2.getString("email"));
+				System.out.println(user.getEmail());
 			}
 		}
 		catch(Exception ex)
@@ -268,7 +269,7 @@ public class AuthDAO {
 		}
 	}
 	
-	public static boolean enterUserName(int userId, String firstName, String lastName)
+	public static boolean enterUserInfo(int userId, String firstName, String lastName)
 	{
 		
 			String updateText = "INSERT INTO user_profile (userId, firstName, lastName) VALUES (?, ?, ?)";
@@ -278,6 +279,28 @@ public class AuthDAO {
 				ps2.setString(2, firstName);
 				ps2.setString(3, lastName);
 				ps2.setInt(1, userId);
+			}
+			catch(Exception ex)
+			{
+				AuthDAO.handleException(ex);
+			}
+			AuthDAO.executeUpdate(ps2);
+			return true;
+		
+		
+	}
+	public static boolean enterUserInfo(int userId, String firstName, String lastName, AccountType type, String email)
+	{
+		
+			String updateText = "INSERT INTO user_profile (userId, firstName, lastName, accountType, email) VALUES (?, ?, ?, ?, ?)";
+			PreparedStatement ps2 = AuthDAO.getPreparedStatement(updateText);
+			try
+			{
+				ps2.setString(2, firstName);
+				ps2.setString(3, lastName);
+				ps2.setInt(1, userId);
+				ps2.setString(4, type.toString());
+				ps2.setString(5, email);
 			}
 			catch(Exception ex)
 			{
@@ -343,6 +366,24 @@ public class AuthDAO {
 
 		
 	}*/
+	
+	public static int removeUserById(String userId)
+	{
+		 String queryText = "DELETE FROM user WHERE userId = ?";
+		 PreparedStatement ps = AuthDAO.getPreparedStatement(queryText);
+		 int id=-1;
+		 try
+		 {
+			 ps.setString(1, userId);
+			 AuthDAO.executeUpdate(ps);
+		 }
+		 catch(Exception ex)
+		 {
+			 AuthDAO.handleException(ex);
+		 }
+		 return id;
+	}
+	
 	
 	public static boolean isUserNameAvailable(String userName)
 	{

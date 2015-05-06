@@ -13,7 +13,7 @@
         <li class="divider"></li>
         <li><a href="#" class="nav">Open Orders</a></li>
         <li class="divider"></li>
-        <li><a href="contact.html" class="nav">My Profile</a></li>
+        <li><a href="profile.jsp" class="nav">My Profile</a></li>
         <li class="divider"></li>
         <li><a href="details.html" class="nav">Details</a></li>
       </ul>

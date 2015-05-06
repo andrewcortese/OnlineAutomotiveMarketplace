@@ -132,7 +132,7 @@ public class SignupServlet extends HttpServlet {
 			{
 				AuthDAO.enterNewUser(username, password);
 				int id = AuthDAO.getUserId(username);
-				AuthDAO.enterUserName(id, firstName, lastName);
+				AuthDAO.enterUserInfo(id, firstName, lastName);
 				targetURL = "/signup.jsp";
 				errors.clear();
 				application.SignupData.setSuccess(true);

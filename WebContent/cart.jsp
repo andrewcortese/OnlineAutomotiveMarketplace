@@ -12,14 +12,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="template_top.jsp" ><jsp:param value="Search Results" name="pageName"/></jsp:include>
+<jsp:include page="template_top.jsp" ><jsp:param value="Shopping Cart" name="pageName"/></jsp:include>
 
 	<%
-		ArrayList<Vehicle> results = (ArrayList<Vehicle>)SessionData.getAttribute("searchResults");
-		if(results == null || results.isEmpty())
+		ArrayList<Vehicle> cart = ShoppingCart.getVehicles();
+		if(cart == null || cart.isEmpty())
 		{
 	%>
-			<p>No Results</p>	
+			<p>Cart is Empty</p>	
 	<%
 		}
 		else
@@ -36,18 +36,11 @@
 					Model
 				</th>
 				<th>
-					Year
-				</th>
-				<th>
 					Price
 				</th>
-				<th>
-					Mileage
-				</th>
-			
 			</tr>
 	<% 
-			for(Vehicle v : results)
+			for(Vehicle v : cart)
 			{
 	%>
 			<tr>
@@ -58,20 +51,7 @@
 					<%=v.getModel() %>
 				</td>
 				<td>
-					<%=v.getYear() %>
-				</td>
-				<td>
 					<%=v.getPrice() %>
-				</td>
-				<td>
-					<%=v.getMileage() %>
-				</td>
-				<td>
-					<form action="cartservlet" method="post">
-					<input type="hidden" name="cartAction" value="add"/>
-					<input type="hidden" name="vID" value="<%=v.getId() %>"/>
-					<input type="submit" value="Add To Cart" />
-					</form>
 				</td>
 			</tr>			
 					
@@ -79,6 +59,11 @@
 			}
 	%>
 			</table>
+			<p>Total: <%=ShoppingCart.calculateTotal() %> </p>
+			<form action="cartservlet" method="post">
+			<input type="hidden" name="cartAction" value="checkout" />
+			<input type="submit" value="Checkout"/>
+			</form>
 	<% 
 		}
 	%>			
