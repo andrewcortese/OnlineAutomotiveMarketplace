@@ -61,6 +61,10 @@
 					<td> <input name="confirmPassword" type="password" class="contact_input"></input></td>
 				</tr>
 				<tr>	
+					<td><label class="contact">Paypal Account Number:</label></td>
+					<td> <input name="paypal" type="password" class="contact_input"></input></td>
+				</tr>
+				<tr>	
 					<td></td>
 			</tr>
 			<tr>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.AccountType;
 import model.AuthDAO;
 import model.User;
 
@@ -59,6 +60,8 @@ public class SignupServlet extends HttpServlet {
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String confirmPassword = request.getParameter("confirmPassword");
+		String email = request.getParameter("email");
+		String paypal = request.getParameter("paypal");
 		
 	
 		
@@ -132,7 +135,7 @@ public class SignupServlet extends HttpServlet {
 			{
 				AuthDAO.enterNewUser(username, password);
 				int id = AuthDAO.getUserId(username);
-				AuthDAO.enterUserInfo(id, firstName, lastName);
+				AuthDAO.enterUserInfo(id, firstName, lastName, AccountType.Buyer, email, paypal);
 				targetURL = "/signup.jsp";
 				errors.clear();
 				application.SignupData.setSuccess(true);

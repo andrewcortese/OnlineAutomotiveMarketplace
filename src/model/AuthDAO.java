@@ -234,6 +234,7 @@ public class AuthDAO {
 					user.setAccountType(AccountType.Buyer);
 				}
 				user.setEmail(rs2.getString("email"));
+				user.setPaypal(rs2.getString("paypal"));
 				System.out.println(user.getEmail());
 			}
 		}
@@ -289,10 +290,10 @@ public class AuthDAO {
 		
 		
 	}
-	public static boolean enterUserInfo(int userId, String firstName, String lastName, AccountType type, String email)
+	public static boolean enterUserInfo(int userId, String firstName, String lastName, AccountType type, String email, String paypal)
 	{
 		
-			String updateText = "INSERT INTO user_profile (userId, firstName, lastName, accountType, email) VALUES (?, ?, ?, ?, ?)";
+			String updateText = "INSERT INTO user_profile (userId, firstName, lastName, accountType, email, paypal) VALUES (?, ?, ?, ?, ?, ?)";
 			PreparedStatement ps2 = AuthDAO.getPreparedStatement(updateText);
 			try
 			{
@@ -301,6 +302,7 @@ public class AuthDAO {
 				ps2.setInt(1, userId);
 				ps2.setString(4, type.toString());
 				ps2.setString(5, email);
+				ps2.setString(6, paypal);
 			}
 			catch(Exception ex)
 			{

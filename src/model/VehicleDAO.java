@@ -200,7 +200,30 @@ public class VehicleDAO {
 	
 	
 	
-	
+	public static ArrayList<Vehicle> getAll()
+	{
+		ArrayList<Vehicle> all = new ArrayList<Vehicle>();
+		String queryText = "SELECT * FROM Vehicle";
+		
+		 PreparedStatement ps = VehicleDAO.getPreparedStatement(queryText);
+		 ArrayList<Vehicle> vs = new ArrayList<Vehicle>();
+		 try
+		 {
+			 ResultSet r = VehicleDAO.executeQuery(ps);
+			 while(r.next())
+			 {
+				 int id = r.getInt("id");
+				 vs.add(VehicleDAO.getVehicleById(id));
+			 }
+		 }
+		 catch(Exception ex)
+		 {
+			 VehicleDAO.handleException(ex);
+		 }
+		
+		 return vs;
+		
+	}
 	
 
 	public static Vehicle getVehicleById(int vehicleId)

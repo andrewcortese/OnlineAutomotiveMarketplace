@@ -24,6 +24,7 @@ public class User implements Serializable {
 	private int userId;
 	private AccountType accountType;
 	private String email;
+	private String paypal;
 	
 	
 	
@@ -166,5 +167,21 @@ public class User implements Serializable {
 	 */
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+
+	/**
+	 * @return the paypal
+	 */
+	public String getPaypal() {
+		return paypal;
+	}
+
+
+	/**
+	 * @param paypal the paypal to set
+	 */
+	public void setPaypal(String paypal) {
+		this.paypal = paypal;
 	}
 }

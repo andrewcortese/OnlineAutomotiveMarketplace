@@ -63,6 +63,14 @@
 	</tr>
 	<tr>
 		<th>
+			Paypal Account Number
+		</th>
+		<td>
+			<%=currentUser.getPaypal() %>
+		</td>
+	</tr>
+	<tr>
+		<th>
 			Account Type
 		</th>
 		<td>

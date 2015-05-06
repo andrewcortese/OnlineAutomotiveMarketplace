@@ -130,6 +130,7 @@ import java.util.*;
 		
 		private static int executeUpdate(PreparedStatement query) {
 			int result = 0;
+			System.out.println(query.toString());
 			try
 			{
 				result = query.executeUpdate();
@@ -239,17 +240,17 @@ import java.util.*;
 		
 		public static int enterNewOrder(int buyer, int seller, int vehicle)
 		{
-			
-			String queryText = "INSERT INTO order (buyerID, sellerID, vehicleID, orderDate) VALUES (?,?,?,?)";
+			String queryText = "INSERT INTO LAB03.order (buyerID, sellerID) VALUES (1, 2)";
+			//String queryText = "INSERT INTO orders (buyerID, sellerID, vehicleID, orderDate) VALUES (?,?,?,?)";
 			PreparedStatement ps = OrderDAO.getPreparedStatement(queryText);
 			try
 			{
 				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 				Date date = new Date();
-				ps.setInt(1, buyer);
-				ps.setInt(2, seller);
-				ps.setInt(3, vehicle);
-				ps.setString(4, date.toString());
+				//ps.setInt(1, buyer);
+				//ps.setInt(2, seller);
+				//ps.setInt(3, vehicle);
+				//ps.setString(4, date.toString());
 			}
 			catch(Exception ex)
 			{
