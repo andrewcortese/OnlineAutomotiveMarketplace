@@ -112,7 +112,7 @@
 						<input type="hidden" name="targetType" value="order" />
 						<input type="hidden" name="id" value=" <%=v.getId()%> "/>
 						<input type="hidden" name="sender" value="/orders.jsp"/>
-						<input type="submit" name="name" value="Delete" />
+						<input type="submit" name="name" value="Cancel" />
 					</form> 
 				</td>
 			</tr>			

@@ -377,6 +377,7 @@ public class AuthDAO {
 		
 		
 	}
+	
 	/*
 	public static boolean enterUserName(int userId, String firstName, String lastName)
 	{

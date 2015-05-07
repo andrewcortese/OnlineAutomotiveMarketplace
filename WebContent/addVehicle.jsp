@@ -12,10 +12,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="template_top.jsp" ><jsp:param value="Search" name="pageName"/></jsp:include>
+<jsp:include page="template_top.jsp" ><jsp:param value="Add Vehicle" name="pageName"/></jsp:include>
 <h3>Search:</h3>
 		<div class="contact_form">
-		<form method="post" action="searchservlet">
+		<form method="post" action="addvehicleservlet">
 			<table>
 			<colgroup span="2" ></colgroup>
 				<tr>
@@ -30,7 +30,6 @@
 					<td><label class="contact">Style:</label></td>
 					<td>
 					<select style="width:100%" class="contact_input" name="style">
-							<option value="any">Any Style</option>
 							<option value="Sedan">Sedan</option>
 							<option value="Coup">Coup</option>
 							<option value="SUV"> SUV</option>
@@ -43,18 +42,7 @@
 				<tr>
 					<td><label class="contact">Year</label></td>
 					<td> 
-						<select name="year" class="contact_input" style="width:100%">
-									<option value="any">Any Year</option>
-							<%
-							for(int i=1900; i<2020; i++)
-							{
-								%>
-									<option value="${i}"><%=i%></option>
-							<%
-							}
-							%>
-							
-						</select>
+						<input name="year" type="text" class="contact_input"></input>
 				
 					</td>
 				</tr>
@@ -71,7 +59,7 @@
 			</tr>
 			<tr>
 			<td colspan="2">
-		<input type="submit" value="Search" />
+		<input type="submit" value="Add" />
 		</td>
 	</tr>
 		

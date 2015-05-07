@@ -147,7 +147,7 @@ public class VehicleDAO {
 	
 	public static ArrayList<Vehicle> getByStyle(String style)
 	{
-		return VehicleDAO.getVehicles("style", style, -1, -1.0, DataKeyType.Str);
+		return VehicleDAO.getVehicles("style", style.toLowerCase(), -1, -1.0, DataKeyType.Str);
 	}
 	
 	public static ArrayList<Vehicle> getByYear(int year)
@@ -283,15 +283,20 @@ public class VehicleDAO {
 		 return v;
 	}
 	
-	public static int enterNewVehicle(String make, String model, String style, int year, double price)
+	public static int enterNewVehicle(String make, String model, String style, int year, double price, int sellerID, int mileage)
 	{
 		
-		String queryText = "INSERT INTO vehicle (make, model, style, year, price) VALUES (?,?,?,?,?)";
+		String queryText = "INSERT INTO Vehicle (make, model, style, year, price, sellerID, mileage) VALUES (?,?,?,?,?,?,?)";
 		PreparedStatement ps = VehicleDAO.getPreparedStatement(queryText);
 		try
 		{
-			//ps.setString(1, userName);
-			//ps.setString(2, password);
+			ps.setString(1, make);
+			ps.setString(2, model);
+			ps.setString(3, style);
+			ps.setInt(4,  year);
+			ps.setDouble(5, price);
+			ps.setInt(6, sellerID);
+			ps.setInt(7,mileage);
 		}
 		catch(Exception ex)
 		{
@@ -317,6 +322,10 @@ public class VehicleDAO {
 			{
 				System.out.println(e);
 			} 
+	}
+
+	public static ArrayList<Vehicle> getByMileage(int miles) {
+		return VehicleDAO.getVehicles("mileage", "", miles, -1.0, DataKeyType.Int);
 	}
 	
 	

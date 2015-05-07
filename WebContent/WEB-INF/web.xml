@@ -69,7 +69,7 @@
     <servlet-name>SearchUsersServlet</servlet-name>
     <url-pattern>/searchusersservlet</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <display-name>DeleteServlet</display-name>
     <servlet-name>DeleteServlet</servlet-name>
@@ -78,5 +78,15 @@
   <servlet-mapping>
     <servlet-name>DeleteServlet</servlet-name>
     <url-pattern>/deleteservlet</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>AddVehicleServlet</display-name>
+    <servlet-name>AddVehicleServlet</servlet-name>
+    <servlet-class>controller.AddVehicleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddVehicleServlet</servlet-name>
+    <url-pattern>/addvehicleservlet</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -64,8 +64,20 @@ public class SignupServlet extends HttpServlet {
 		String confirmPassword = request.getParameter("confirmPassword");
 		String email = request.getParameter("email");
 		String paypal = request.getParameter("paypal");
+		String theType = request.getParameter("type");
 		
-	
+		AccountType t = AccountType.Buyer;
+		if(theType != null)
+		{
+			if(theType.equals("buyer"))
+			{
+				t = AccountType.Buyer;
+			}
+			else if(theType.equals("seller"))
+			{
+				t = AccountType.Seller;
+			}
+		}
 		
 		//null check
 		if(username==null)
@@ -137,7 +149,7 @@ public class SignupServlet extends HttpServlet {
 			{
 				AuthDAO.enterNewUser(username, password);
 				int id = AuthDAO.getUserId(username);
-				AuthDAO.enterUserInfo(id, firstName, lastName, AccountType.Buyer, email, paypal);
+				AuthDAO.enterUserInfo(id, firstName, lastName, t, email, paypal);
 				targetURL = "/signup.jsp";
 				errors.clear();
 				application.SignupData.setSuccess(true);

@@ -23,6 +23,11 @@
         <li><a href="admincontrol.jsp" class="nav">Control Panel</a></li>
         <li class="divider"></li>
         <%}%>
+        <%if(LoginData.isLoggedIn() && LoginData.getCurrentUser().getAccountType().equals(AccountType.Seller)){
+        %>
+        <li><a href="addVehicle.jsp" class="nav">Add New Vehicle</a></li>
+        <li class="divider"></li>
+        <%}%>
       </ul>
     </div>
 <div class="crumb_navigation"> Navigation: <span class="current"></span> </div>

@@ -6,6 +6,7 @@ public enum SystemAction {
 	LogIn,
 	Purchase,
 	Logout,
+	AddVehicle,
 	
 	
 }

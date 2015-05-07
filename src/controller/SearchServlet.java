@@ -53,10 +53,11 @@ public class SearchServlet extends HttpServlet {
 		String style = request.getParameter("style");
 		String year = request.getParameter("year");
 		String price = request.getParameter("price");
+		String mileage = request.getParameter("mileage");
 		
 		ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
 		ArrayList<Vehicle> queryResults = new ArrayList<Vehicle>();
-		System.out.printf("make: %s model: %s style: %s year: %s", make, model, style, year);
+		System.out.printf("make: %s model: %s style: %s year: %s price: %s", make, model, style, year, price);
 		if(exists(make))
 		{
 			queryResults = VehicleDAO.getByMake(make);
@@ -72,7 +73,7 @@ public class SearchServlet extends HttpServlet {
 		
 		if(exists(style) && !style.equals("any"))
 		{
-			queryResults = VehicleDAO.getByModel(style);
+			queryResults = VehicleDAO.getByStyle(style.toLowerCase());
 			vehicles = rightToLeftCombine(vehicles, queryResults);
 		}
 		
@@ -87,6 +88,13 @@ public class SearchServlet extends HttpServlet {
 		{
 			double decPrice = Double.parseDouble(price);
 			queryResults = VehicleDAO.getByPrice(decPrice);
+			vehicles = rightToLeftCombine(vehicles, queryResults);
+		}
+		
+		if(exists(mileage))
+		{
+			int miles = Integer.parseInt(mileage);
+			queryResults = VehicleDAO.getByMileage(miles);
 			vehicles = rightToLeftCombine(vehicles, queryResults);
 		}
 	

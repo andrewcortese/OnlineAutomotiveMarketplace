@@ -68,6 +68,15 @@
 					<td><label class="contact">Paypal Acct Num:</label></td>
 					<td> <input name="paypal" type="text" class="contact_input"></input></td>
 				</tr>
+				<tr>
+					<td><label class="contact">Account Type</label></td>
+					<td> 
+						<select name="type" class="contact_input" style="width:100%">
+							<option value="buyer">Buyer</option>
+							<option value="seller">Seller</option>
+						</select>
+					</td>
+				</tr>
 				<tr>	
 					<td></td>
 			</tr>

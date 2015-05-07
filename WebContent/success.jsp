@@ -55,6 +55,14 @@
 				<a href="index.jsp">Click Here To Return Home</a>
 		<%
 			}
+			else if(a == SystemAction.AddVehicle)
+			{
+				message = "Vehicle Added!";
+		%>
+				<h2 style="color:green"><%=message %></h2>
+				<a href="profile.jsp">Click Here To View Profile</a>
+		<%
+			}
 			else
 			{
 				message = "Success";
