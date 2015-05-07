@@ -10,14 +10,17 @@ public class Order {
 	int buyerId;
 	Date dateOrdered;
 	boolean isOpen;
+	User seller;
+	User buyer;
+	
 	
 	public Order()
 	{
-		this(null, -1, -1, new Date(), false);
+		this(null, -1, -1, new Date(), false, new User(), new User());
 	}
 	
 	public Order(Vehicle vehicle, int sellerId, int buyerId, Date dateOrdered,
-			boolean isOpen) 
+			boolean isOpen, User b, User s) 
 	{
 		super();
 		this.vehicle = vehicle;
@@ -25,6 +28,8 @@ public class Order {
 		this.buyerId = buyerId;
 		this.dateOrdered = dateOrdered;
 		this.isOpen = isOpen;
+		seller=s;
+		buyer=b;
 	}
 	
 	/**
@@ -100,6 +105,34 @@ public class Order {
 	 */
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the seller
+	 */
+	public User getSeller() {
+		return seller;
+	}
+
+	/**
+	 * @param seller the seller to set
+	 */
+	public void setSeller(User seller) {
+		this.seller = seller;
+	}
+
+	/**
+	 * @return the buyer
+	 */
+	public User getBuyer() {
+		return buyer;
+	}
+
+	/**
+	 * @param buyer the buyer to set
+	 */
+	public void setBuyer(User buyer) {
+		this.buyer = buyer;
 	}
 	
 	

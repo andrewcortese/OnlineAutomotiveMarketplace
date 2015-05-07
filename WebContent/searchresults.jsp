@@ -27,13 +27,16 @@
 			//SessionData.removeAttribute("searchResults");
 	%>
 			<table>
-			<colgroup span="4">
+			<colgroup span="5">
 			<tr>
 				<th>
 					Make
 				</th>
 				<th>
 					Model
+				</th>
+				<th>
+					Style
 				</th>
 				<th>
 					Year
@@ -44,6 +47,10 @@
 				<th>
 					Mileage
 				</th>
+				<th>
+					Seller
+				</th>
+				
 			
 			</tr>
 	<% 
@@ -58,6 +65,9 @@
 					<%=v.getModel() %>
 				</td>
 				<td>
+					<%=v.getStyle().toString() %>
+				</td>
+				<td>
 					<%=v.getYear() %>
 				</td>
 				<td>
@@ -65,6 +75,9 @@
 				</td>
 				<td>
 					<%=v.getMileage() %>
+				</td>
+				<td>
+					<%=v.getSeller().getUsername() %>
 				</td>
 				<td>
 					<form action="cartservlet" method="post">

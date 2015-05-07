@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import model.SystemAction;
 import model.Vehicle;
 
 public class SessionData {
@@ -13,7 +14,29 @@ public class SessionData {
 	private static HttpSession currentSession;
 	private static boolean active;
 	
+	
+	private static SystemAction successAction = SystemAction.None;
+	
+	
+	
+	/**
+	 * @return the successAction
+	 */
+	public static SystemAction getSuccessAction() {
+		return successAction;
+	}
+
+	/**
+	 * @param successAction the successAction to set
+	 */
+	public static void setSuccessAction(SystemAction successAction) {
+		SessionData.successAction = successAction;
+	}
+
+
+
 	private static Vehicle selectedProduct;
+	
 	
 	
 	
@@ -35,8 +58,6 @@ public class SessionData {
 	
 	private static model.User selectedUser;
 	private static boolean isFound = false;
-	
-	
 	
 	/**
 	 * @return the selectedUser

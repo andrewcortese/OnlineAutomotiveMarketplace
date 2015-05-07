@@ -82,9 +82,87 @@
 	
 	</table>
 <%
+	
+	if(currentUser.getAccountType()==AccountType.Seller)
+	{
+		ArrayList<Vehicle> results = VehicleDAO.getBySeller(currentUser.getUserId());
+		%>
+		<br><br><br>
+		<h2 align="center">My Vehicles</h2>
+		<table align="center">
+			<colgroup span="5">
+			<tr>
+				<th>
+					Make
+				</th>
+				<th>
+					Model
+				</th>
+				<th>
+					Style
+				</th>
+				<th>
+					Year
+				</th>
+				<th>
+					Price
+				</th>
+				<th>
+					Mileage
+				</th>
+				<th>
+					Delete
+				</th>
+				
+			
+			</tr>
+	<% 
+			for(Vehicle v : results)
+			{
+	%>
+			<tr>
+				<td>
+					<%=v.getMake() %>
+				</td>
+				<td>
+					<%=v.getModel() %>
+				</td>
+				<td>
+					<%=v.getStyle().toString() %>
+				</td>
+				<td>
+					<%=v.getYear() %>
+				</td>
+				<td>
+					<%=v.getPrice() %>
+				</td>
+				<td>
+					<%=v.getMileage() %>
+				</td>
+				<td>
+					<form action="deleteservlet" method="post">
+						<input type="hidden" name="targetType" value="vehicle" />
+						<input type="hidden" name="id" value=" <%=v.getId()%> "/>
+						<input type="hidden" name="sender" value="/profile.jsp"/>
+						<input type="submit" name="name" value="Delete" />
+					</form> 
+				</td>
+			</tr>			
+					
+	<% 
+			}
+	%>
+			</table>
+		
+		<% 
+
+
+	}
 	}
 %>
 
+
+	
 
 	<jsp:include page="template_bottom.jsp" />
 	

@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import application.SessionData;
 import model.AccountType;
 import model.AuthDAO;
+import model.SystemAction;
 import model.User;
 
 /**
@@ -139,6 +141,8 @@ public class SignupServlet extends HttpServlet {
 				targetURL = "/signup.jsp";
 				errors.clear();
 				application.SignupData.setSuccess(true);
+				SessionData.setSuccessAction(SystemAction.SignUp);
+				targetURL="/success.jsp";
 			}
 			else
 			{

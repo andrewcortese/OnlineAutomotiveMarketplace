@@ -15,6 +15,7 @@ import application.SessionData;
 import application.ShoppingCart;
 import model.Order;
 import model.OrderDAO;
+import model.SystemAction;
 import model.Vehicle;
 import model.VehicleDAO;
 
@@ -47,6 +48,8 @@ public class CartServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String cartAction = request.getParameter("cartAction");
 		
+		String targetURL = "/cart.jsp";
+		
 		if(cartAction == null)
 		{
 			cartAction = new String();
@@ -76,12 +79,14 @@ public class CartServlet extends HttpServlet {
 				OrderDAO.enterNewOrder(o.getBuyerId(), o.getSellerId(), o.getVehicle().getId());
 			}
 			ShoppingCart.setVehicles(new ArrayList<Vehicle>());
+			SessionData.setSuccessAction(SystemAction.Purchase);
+			targetURL="/success.jsp";
 		}
 		else
 		{
 			
 		}
-		String targetURL = "/cart.jsp";
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(targetURL);
 		if(dispatcher == null) System.out.println("WTF");
 		dispatcher.forward(request, response);

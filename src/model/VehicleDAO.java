@@ -160,6 +160,11 @@ public class VehicleDAO {
 		return VehicleDAO.getVehicles("price", "", -1, price, DataKeyType.Dec);
 	}
 	
+	public static ArrayList<Vehicle> getBySeller(int id)
+	{
+		return VehicleDAO.getVehicles("sellerID", new String(), id, -1.0, DataKeyType.Int);
+	}
+	
 	public static ArrayList<Vehicle> getVehicles(String key, String stringValue, int intValue, double decValue, DataKeyType type)
 	{
 		String queryText = "SELECT * FROM Vehicle WHERE "+key+" = ?";
@@ -203,7 +208,7 @@ public class VehicleDAO {
 	public static int deleteVehicle(int id)
 	{
 		
-		String queryText = "DELETE FROM user WHERE id = ?";
+		String queryText = "DELETE FROM Vehicle WHERE id = ?";
 		PreparedStatement ps = VehicleDAO.getPreparedStatement(queryText);
 		try
 		{
@@ -262,6 +267,11 @@ public class VehicleDAO {
 				 v.setModel(r.getString("model"));
 				 v.setYear(r.getInt("year"));
 				 v.setPrice(r.getDouble("price"));
+				 v.setSellerID(r.getInt("sellerID"));
+				 v.setMileage(r.getInt("mileage"));
+				 v.setStyle(r.getString("style"));
+				 User seller = AuthDAO.getUserById(v.getSellerID());
+				 v.setSeller(seller);
 				 
 				 id = r.getInt("id");
 			 }

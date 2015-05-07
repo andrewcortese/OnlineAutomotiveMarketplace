@@ -3,8 +3,6 @@ package model;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-
 	import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -169,7 +167,7 @@ import java.util.*;
 		
 		public static ArrayList<Order> getOrders(String key, String stringValue, int intValue, double decValue, DataKeyType type)
 		{
-			String queryText = "SELECT * FROM Order WHERE "+key+" = ?";
+			String queryText = "SELECT * FROM LAB03.order WHERE "+key+" = ?";
 			System.out.printf("\nQuery: %s", queryText);
 			 PreparedStatement ps = OrderDAO.getPreparedStatement(queryText);
 			 ArrayList<Order> vs = new ArrayList<Order>();
@@ -206,12 +204,62 @@ import java.util.*;
 		
 		
 		
+		public static ArrayList<Order> getOrdersByUser(int id, AccountType type)
+		{
+			String queryText = "SELECT * FROM LAB03.order WHERE buyerID = ?";
+			if(type==AccountType.Seller)
+			{
+				queryText = "SELECT * FROM LAB03.order WHERE sellerID = ?";
+			}
+			 PreparedStatement ps = OrderDAO.getPreparedStatement(queryText);
+			 ArrayList<Order> orders = new ArrayList<Order>();
+			 Order v = new Order();
+			 try
+			 {
+				 ps.setInt(1, id);
+				 ResultSet r = OrderDAO.executeQuery(ps);
+				 while(r.next())
+				 {
+					 v = OrderDAO.getOrderById(r.getInt("id"));
+					 orders.add(v);
+				 }
+			 }
+			 catch(Exception ex)
+			 {
+				 OrderDAO.handleException(ex);
+			 }
+			 return orders;
+		}
+		
+		public static ArrayList<Order> getAll()
+		{
+			String queryText = "SELECT * FROM LAB03.order";
+			 PreparedStatement ps = OrderDAO.getPreparedStatement(queryText);
+			 ArrayList<Order> orders = new ArrayList<Order>();
+			 Order v = new Order();
+			 try
+			 {
+				 ResultSet r = OrderDAO.executeQuery(ps);
+				 while(r.next())
+				 {
+					 v = OrderDAO.getOrderById(r.getInt("id"));
+					 orders.add(v);
+				 }
+			 }
+			 catch(Exception ex)
+			 {
+				 OrderDAO.handleException(ex);
+			 }
+			 return orders;
+		}
+		
+		
 		
 		
 
 		public static Order getOrderById(int OrderId)
 		{
-			 String queryText = "SELECT * FROM Order WHERE id = ?";
+			 String queryText = "SELECT * FROM LAB03.order WHERE id = ?";
 			 PreparedStatement ps = OrderDAO.getPreparedStatement(queryText);
 			
 			 Order v = new Order();
@@ -224,9 +272,18 @@ import java.util.*;
 					 
 					 v.setId(OrderId);
 					 v.setBuyerId(r.getInt("buyerID"));
-					 v.setSellerId(r.getInt("buyerID"));
+					 v.setBuyer(AuthDAO.getUserById(v.getBuyerId()));
+					 v.setSellerId(r.getInt("sellerID"));
+					 v.setSeller(AuthDAO.getUserById(v.getSellerId()));
 					 Vehicle ve = VehicleDAO.getVehicleById(r.getInt("vehicleID"));
 					 v.setVehicle(ve);
+					 Date d = new Date();
+					 try
+					 {
+						 
+					 }
+					 catch(Exception e){}
+					 v.setDateOrdered(new Date());
 					 
 					
 				 }
@@ -240,17 +297,17 @@ import java.util.*;
 		
 		public static int enterNewOrder(int buyer, int seller, int vehicle)
 		{
-			String queryText = "INSERT INTO LAB03.order (buyerID, sellerID) VALUES (1, 2)";
+			String queryText = "INSERT INTO LAB03.order (buyerID, sellerID, vehicleID, orderDate) VALUES (?,?,?,?)";
 			//String queryText = "INSERT INTO orders (buyerID, sellerID, vehicleID, orderDate) VALUES (?,?,?,?)";
 			PreparedStatement ps = OrderDAO.getPreparedStatement(queryText);
 			try
 			{
 				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 				Date date = new Date();
-				//ps.setInt(1, buyer);
-				//ps.setInt(2, seller);
-				//ps.setInt(3, vehicle);
-				//ps.setString(4, date.toString());
+				ps.setInt(1, buyer);
+				ps.setInt(2, seller);
+				ps.setInt(3, vehicle);
+				ps.setString(4, date.toString());
 			}
 			catch(Exception ex)
 			{
@@ -261,7 +318,22 @@ import java.util.*;
 		}
 		
 		
-		
+		public static int deleteOrder(int id)
+		{
+			
+			String queryText = "DELETE FROM LAB03.order WHERE id = ?";
+			PreparedStatement ps = OrderDAO.getPreparedStatement(queryText);
+			try
+			{
+				ps.setInt(1, id);
+			}
+			catch(Exception ex)
+			{
+				OrderDAO.handleException(ex);
+			}
+			OrderDAO.executeUpdate(ps);
+			return 1;
+		}
 		
 		public static void DB_Close() throws Throwable
 		{

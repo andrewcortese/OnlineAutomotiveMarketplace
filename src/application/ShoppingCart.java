@@ -25,9 +25,15 @@ public static void remove(){
 
 public static int count(){
 	
-	
-	return vehicles.size();
-	
+	if(vehicles == null)
+	{
+		vehicles = new ArrayList<Vehicle>();
+		return 0;
+	}
+	else
+	{
+		return vehicles.size();
+	}
 	
 }
 
@@ -36,6 +42,7 @@ public static double calculateTotal(){
 	if(vehicles == null)
 	{
 		vehicles = new ArrayList<Vehicle>();
+		return 0;
 	}
     for(Vehicle v : vehicles)
     {

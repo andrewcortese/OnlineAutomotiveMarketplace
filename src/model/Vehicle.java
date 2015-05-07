@@ -13,7 +13,8 @@ public class Vehicle {
 	RatingList ratings;
 	String description;
 	String photoURL;
-	String seller;
+	User seller;
+	
 	
 	
 	public Vehicle(int id, String make, String model, int year, int mileage, VehicleStyle style, double price, int sellerID, RatingList ratings) {
@@ -162,7 +163,7 @@ public class Vehicle {
 		this.style = VehicleStyle.Other;
 		for(VehicleStyle s : VehicleStyle.values())
 		{
-			if(style.equals(s.toString()))
+			if(style.equalsIgnoreCase(s.toString()))
 			{
 				this.style = s;
 			}
@@ -244,14 +245,14 @@ public class Vehicle {
 	/**
 	 * @return the seller
 	 */
-	public String getSeller() {
+	public User getSeller() {
 		return seller;
 	}
 
 	/**
 	 * @param seller the seller to set
 	 */
-	public void setSeller(String seller) {
+	public void setSeller(User seller) {
 		this.seller = seller;
 	}
 	

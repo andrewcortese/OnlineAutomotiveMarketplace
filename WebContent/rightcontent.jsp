@@ -1,3 +1,7 @@
+
+ <%@ page import="application.*" %>
+ <%@ page import="model.*" %>
+
 <div class="right_content"  style="background-color:white">
       <div class="title_box">Quick Search</div>
       <div class="border_box">
@@ -5,9 +9,9 @@
         <a href="#" class="join">search</a> </div>
       <div class="shopping_cart">
         <div class="title_box">Shopping cart</div>
-        <div class="cart_details"> 3 items <br />
-          <span class="border_cart"></span> Total: <span class="price">350$</span> </div>
-        <div class="cart_icon"><a href="#"><img src="images/shoppingcart.png" alt="" width="35" height="35" border="0" /></a></div>
+        <div class="cart_details"> <%=ShoppingCart.count() %> items <br />
+          <span class="border_cart"></span> Total: <span class="price">$<%=ShoppingCart.calculateTotal() %></span> </div>
+        <div class="cart_icon"><a href="cart.jsp"><img src="images/shoppingcart.png" alt="" width="35" height="35" border="0" /></a></div>
       </div>
       <div class="title_box">News</div>
       <div class="border_box">

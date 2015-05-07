@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.AuthDAO;
+import model.OrderDAO;
 import model.VehicleDAO;
 
 /**
@@ -48,6 +49,7 @@ public class DeleteServlet extends HttpServlet {
 		}
 		if(targetType != null && idStr != null && !idStr.isEmpty())
 		{
+			idStr = idStr.trim();
 			int id = Integer.parseInt(idStr);
 			
 			if(targetType.equals("user"))
@@ -57,6 +59,10 @@ public class DeleteServlet extends HttpServlet {
 			else if(targetType.equals("vehicle"))
 			{
 				VehicleDAO.deleteVehicle(id);
+			}
+			else if(targetType.equals("order"))
+			{
+				OrderDAO.deleteOrder(id);
 			}
 			
 			
