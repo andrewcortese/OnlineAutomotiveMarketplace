@@ -40,8 +40,8 @@
 		{
 			
 	%>
-	<%=results.size() %>
-			<table>
+	<h2>My Orders</h2>
+			<table align="center">
 			<colgroup span="4">
 			<tr>
 				<th>

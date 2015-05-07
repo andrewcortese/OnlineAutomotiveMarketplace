@@ -118,6 +118,7 @@ public class VehicleDAO {
 		{
 			VehicleDAO.handleException(ex);
 		}
+		
 		return result;
 	}
 	
@@ -132,6 +133,7 @@ public class VehicleDAO {
 		{
 			VehicleDAO.handleException(ex);
 		}
+	
 		return result;
 	}
 	
@@ -202,6 +204,14 @@ public class VehicleDAO {
 		 {
 			 System.out.println(v.getMake() + " " + v.getModel());
 		 }
+			try
+			{
+				DB_Close();
+			}
+			catch(Throwable e)
+			{
+				
+			}
 		 return vs;
 	}
 	
@@ -219,6 +229,14 @@ public class VehicleDAO {
 			VehicleDAO.handleException(ex);
 		}
 		VehicleDAO.executeUpdate(ps);
+		try
+		{
+			DB_Close();
+		}
+		catch(Throwable e)
+		{
+			
+		}
 		return 1;
 	}
 	
@@ -243,7 +261,14 @@ public class VehicleDAO {
 		 {
 			 VehicleDAO.handleException(ex);
 		 }
-		
+			try
+			{
+				DB_Close();
+			}
+			catch(Throwable e)
+			{
+				
+			}
 		 return vs;
 		
 	}
@@ -280,6 +305,14 @@ public class VehicleDAO {
 		 {
 			 VehicleDAO.handleException(ex);
 		 }
+			try
+			{
+				DB_Close();
+			}
+			catch(Throwable e)
+			{
+				
+			}
 		 return v;
 	}
 	
@@ -303,6 +336,14 @@ public class VehicleDAO {
 			VehicleDAO.handleException(ex);
 		}
 		VehicleDAO.executeUpdate(ps);
+		try
+		{
+			DB_Close();
+		}
+		catch(Throwable e)
+		{
+			
+		}
 		return 1;
 	}
 	

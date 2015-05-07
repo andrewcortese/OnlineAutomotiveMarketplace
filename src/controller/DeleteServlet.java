@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import application.DB;
 import model.AuthDAO;
 import model.OrderDAO;
 import model.VehicleDAO;
@@ -67,7 +68,7 @@ public class DeleteServlet extends HttpServlet {
 			
 			
 		}
-		
+		DB.closeAll();
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(senderURL);
 		if(dispatcher == null) System.out.println("WTF");
 		dispatcher.forward(request, response);

@@ -101,6 +101,7 @@ public class AuthDAO {
 		{
 			AuthDAO.handleException(ex);
 		}
+		
 		return result;
 	}
 	
@@ -115,6 +116,7 @@ public class AuthDAO {
 		{
 			AuthDAO.handleException(ex);
 		}
+		
 		return result;
 	}
 	
@@ -155,7 +157,14 @@ public class AuthDAO {
 		{
 			match = true;
 		}
-		
+		try
+		{
+			DB_Close();
+		}
+		catch(Throwable e)
+		{
+			
+		}
 		return match;
 		
 	
@@ -167,6 +176,14 @@ public class AuthDAO {
 		model.User u = new model.User();
 		int id = getUserId(username);
 		u = getUserById(id);
+		try
+		{
+			DB_Close();
+		}
+		catch(Throwable e)
+		{
+			
+		}
 		return u;
 	}
 	public static ArrayList<User> getAll()
@@ -189,7 +206,14 @@ public class AuthDAO {
 		 {
 			 AuthDAO.handleException(ex);
 		 }
-		
+			try
+			{
+				DB_Close();
+			}
+			catch(Throwable e)
+			{
+				
+			}
 		 return vs;
 		
 	}
@@ -221,7 +245,14 @@ public class AuthDAO {
 			AuthDAO.handleException(ex);
 		}
 		AuthDAO.executeUpdate(ps2);
-		
+		try
+		{
+			DB_Close();
+		}
+		catch(Throwable e)
+		{
+			
+		}
 		return 1;
 	}
 	public static int getUserId(String userName)
@@ -242,6 +273,14 @@ public class AuthDAO {
 		 {
 			 AuthDAO.handleException(ex);
 		 }
+			try
+			{
+				DB_Close();
+			}
+			catch(Throwable e)
+			{
+				
+			}
 		 return id;
 		 
 	}
@@ -306,7 +345,14 @@ public class AuthDAO {
 		{
 			AuthDAO.handleException(ex);
 		}
-		
+		try
+		{
+			DB_Close();
+		}
+		catch(Throwable e)
+		{
+			
+		}
 		return user;
 	}
 	
@@ -326,10 +372,26 @@ public class AuthDAO {
 				AuthDAO.handleException(ex);
 			}
 			AuthDAO.executeUpdate(ps);
+			try
+			{
+				DB_Close();
+			}
+			catch(Throwable e)
+			{
+				
+			}
 			return AuthDAO.getUserId(userName);
 		}
 		else
 		{
+			try
+			{
+				DB_Close();
+			}
+			catch(Throwable e)
+			{
+				
+			}
 			return -1;
 		}
 	}
@@ -350,6 +412,14 @@ public class AuthDAO {
 				AuthDAO.handleException(ex);
 			}
 			AuthDAO.executeUpdate(ps2);
+			try
+			{
+				DB_Close();
+			}
+			catch(Throwable e)
+			{
+				
+			}
 			return true;
 		
 		
@@ -373,6 +443,14 @@ public class AuthDAO {
 				AuthDAO.handleException(ex);
 			}
 			AuthDAO.executeUpdate(ps2);
+			try
+			{
+				DB_Close();
+			}
+			catch(Throwable e)
+			{
+				
+			}
 			return true;
 		
 		
@@ -448,6 +526,14 @@ public class AuthDAO {
 		 {
 			 AuthDAO.handleException(ex);
 		 }
+			try
+			{
+				DB_Close();
+			}
+			catch(Throwable e)
+			{
+				
+			}
 		 return id;
 	}
 	
@@ -480,6 +566,14 @@ public class AuthDAO {
 		catch(Exception ex)
 		{
 			AuthDAO.handleException(ex);
+		}
+		try
+		{
+			DB_Close();
+		}
+		catch(Throwable e)
+		{
+			
 		}
 		return available;
 	}

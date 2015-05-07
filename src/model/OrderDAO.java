@@ -3,7 +3,7 @@ package model;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-	import java.sql.*;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -122,6 +122,7 @@ import java.util.*;
 			{
 				OrderDAO.handleException(ex);
 			}
+			
 			return result;
 		}
 		
@@ -137,6 +138,7 @@ import java.util.*;
 			{
 				OrderDAO.handleException(ex);
 			}
+			
 			return result;
 		}
 		
@@ -250,6 +252,14 @@ import java.util.*;
 			 {
 				 OrderDAO.handleException(ex);
 			 }
+				try
+				{
+					DB_Close();
+				}
+				catch(Throwable e)
+				{
+					
+				}
 			 return orders;
 		}
 		
@@ -292,6 +302,14 @@ import java.util.*;
 			 {
 				 OrderDAO.handleException(ex);
 			 }
+				try
+				{
+					DB_Close();
+				}
+				catch(Throwable e)
+				{
+					
+				}
 			 return v;
 		}
 		
@@ -314,6 +332,14 @@ import java.util.*;
 				OrderDAO.handleException(ex);
 			}
 			OrderDAO.executeUpdate(ps);
+			try
+			{
+				DB_Close();
+			}
+			catch(Throwable e)
+			{
+				
+			}
 			return 1;
 		}
 		
@@ -332,6 +358,14 @@ import java.util.*;
 				OrderDAO.handleException(ex);
 			}
 			OrderDAO.executeUpdate(ps);
+			try
+			{
+				DB_Close();
+			}
+			catch(Throwable e)
+			{
+				
+			}
 			return 1;
 		}
 		

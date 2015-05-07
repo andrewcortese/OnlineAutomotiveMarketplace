@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.User;
 
+import application.DB;
 import application.SessionData;
 import model.AuthDAO;
 
@@ -44,7 +45,7 @@ public class SearchUsersServlet extends HttpServlet {
 		model.User u = AuthDAO.getByUsername(name);
 		
 		SessionData.setSelectedUser(u);
-		
+		DB.closeAll();
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/userdetails.jsp");
 		dispatcher.forward(request, response);
 	}
