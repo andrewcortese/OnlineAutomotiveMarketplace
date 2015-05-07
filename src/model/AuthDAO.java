@@ -1,7 +1,9 @@
 package model;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import com.mysql.jdbc.Driver;
 //import config.Config;
 
@@ -160,6 +162,68 @@ public class AuthDAO {
 		
 	}
 	
+	public static model.User getByUsername(String username)
+	{
+		model.User u = new model.User();
+		int id = getUserId(username);
+		u = getUserById(id);
+		return u;
+	}
+	public static ArrayList<User> getAll()
+	{
+		
+		String queryText = "SELECT * FROM user";
+		
+		 PreparedStatement ps = AuthDAO.getPreparedStatement(queryText);
+		 ArrayList<User> vs = new ArrayList<User>();
+		 try
+		 {
+			 ResultSet r = AuthDAO.executeQuery(ps);
+			 while(r.next())
+			 {
+				 int id = r.getInt("userId");
+				 vs.add(AuthDAO.getUserById(id));
+			 }
+		 }
+		 catch(Exception ex)
+		 {
+			 AuthDAO.handleException(ex);
+		 }
+		
+		 return vs;
+		
+	}
+	
+	
+	public static int deleteUser(int id)
+	{
+		
+		String queryText = "DELETE FROM user WHERE userId = ?";
+		PreparedStatement ps = AuthDAO.getPreparedStatement(queryText);
+		try
+		{
+			ps.setInt(1, id);
+		}
+		catch(Exception ex)
+		{
+			AuthDAO.handleException(ex);
+		}
+		AuthDAO.executeUpdate(ps);
+		
+		String queryText2 = "DELETE FROM user_profile WHERE userId = ?";
+		PreparedStatement ps2 = AuthDAO.getPreparedStatement(queryText2);
+		try
+		{
+			ps2.setInt(1, id);
+		}
+		catch(Exception ex)
+		{
+			AuthDAO.handleException(ex);
+		}
+		AuthDAO.executeUpdate(ps2);
+		
+		return 1;
+	}
 	public static int getUserId(String userName)
 	{
 		 String queryText = "SELECT userId FROM user WHERE username = ?";

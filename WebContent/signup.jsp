@@ -53,6 +53,10 @@
 					<td><input name="lastName" type="text" class="contact_input"></input></td>
 				</tr>
 				<tr>
+					<td><label class="contact">Email:</label></td>
+					<td><input name="email" type="text" class="contact_input"></input></td>
+				</tr>
+				<tr>
 					<td><label class="contact">Password:</label></td>
 					<td> <input name="password" type="password" class="contact_input"></input></td>
 				</tr>
@@ -61,8 +65,8 @@
 					<td> <input name="confirmPassword" type="password" class="contact_input"></input></td>
 				</tr>
 				<tr>	
-					<td><label class="contact">Paypal Account Number:</label></td>
-					<td> <input name="paypal" type="password" class="contact_input"></input></td>
+					<td><label class="contact">Paypal Acct Num:</label></td>
+					<td> <input name="paypal" type="text" class="contact_input"></input></td>
 				</tr>
 				<tr>	
 					<td></td>

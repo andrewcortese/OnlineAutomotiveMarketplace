@@ -12,31 +12,36 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="template_top.jsp" ><jsp:param value="Profile" name="pageName"/></jsp:include>
+<jsp:include page="template_top.jsp" ><jsp:param value="User Details" name="pageName"/></jsp:include>
 
-<h2 align="center">My Account</h2>
+
 <%
-	User currentUser = new User();
-	boolean isLoggedIn = false;
+	User selectedUser = new User();
+	boolean selected = false;
 
-	if(LoginData.isLoggedIn())
+	selectedUser = SessionData.getSelectedUser();
+	if(selectedUser == null)
 	{
-		currentUser = LoginData.getCurrentUser();
-		isLoggedIn = true;
+		selected = false;
+	}
+	else
+	{
+		selected = true;
 	}
 	
 	
 	//if we're not logged in, display the form.
-	if(isLoggedIn == false)
+	if(selected == false)
 	{
 %>	
-		<p>You Are Not Logged In</p>
-		<a href="login.jsp">Click Here To Log In</a>	
+		<p>User Not Found</p>
+		<a href="searchusers.jsp">Click To Search Users</a>	
 <%
 	}
 	else
 	{
 %>
+<h2 align="center">User Details For: <%=selectedUser.getFullName() %></h2>
 	<table align="center" style="fontsize:18">
 	<colgroup span="2">
 	<tr>
@@ -44,7 +49,7 @@
 			Name
 		</th>
 		<td>
-			<%=currentUser.getFullName() %>
+			<%=selectedUser.getFullName() %>
 		</td>
 	</tr>
 	<tr>
@@ -52,7 +57,7 @@
 			Username
 		</th>
 		<td>
-			<%=currentUser.getUsername() %>
+			<%=selectedUser.getUsername() %>
 		</td>
 	</tr>
 	<tr>
@@ -60,15 +65,7 @@
 			Email
 		</th>
 		<td>
-			<%=currentUser.getEmail() %>
-		</td>
-	</tr>
-	<tr>
-		<th>
-			Paypal Account Number
-		</th>
-		<td>
-			<%=currentUser.getPaypal() %>
+			<%=selectedUser.getEmail() %>
 		</td>
 	</tr>
 	<tr>
@@ -76,7 +73,18 @@
 			Account Type
 		</th>
 		<td>
-			<%=currentUser.getAccountType().toString() %>
+			<%=selectedUser.getAccountType().toString() %>
+		</td>
+	</tr>
+	<tr>
+		<th>
+			Contact
+		</th>
+		<td>
+			<%
+				String s = "mailto:" + selectedUser.getEmail();
+			%>
+			<a href=" <%=s %> ">Click Here</a>
 		</td>
 	</tr>
 	

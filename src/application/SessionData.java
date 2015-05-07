@@ -33,6 +33,49 @@ public class SessionData {
 
 	
 	
+	private static model.User selectedUser;
+	private static boolean isFound = false;
+	
+	
+	
+	/**
+	 * @return the selectedUser
+	 */
+	public static model.User getSelectedUser() {
+		return selectedUser;
+	}
+
+	/**
+	 * @param selectedUser the selectedUser to set
+	 */
+	public static void setSelectedUser(model.User selectedUser) {
+		if(selectedUser != null)
+		{
+			SessionData.isFound = true;
+		}
+		else
+		{
+			isFound = false;
+		}
+		SessionData.selectedUser = selectedUser;
+	}
+
+	/**
+	 * @return the isFound
+	 */
+	public static boolean isFound() {
+		return isFound;
+	}
+
+	/**
+	 * @param isFound the isFound to set
+	 */
+	public static void setFound(boolean isFound) {
+		SessionData.isFound = isFound;
+	}
+
+
+
 	private static Map<String, Object> attributes = new HashMap<String, Object>();
 	
 	public static void setAttribute(String key, Object value)

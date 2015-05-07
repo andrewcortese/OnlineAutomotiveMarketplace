@@ -59,4 +59,24 @@
     <servlet-name>CartServlet</servlet-name>
     <url-pattern>/cartservlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchUsersServlet</display-name>
+    <servlet-name>SearchUsersServlet</servlet-name>
+    <servlet-class>controller.SearchUsersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchUsersServlet</servlet-name>
+    <url-pattern>/searchusersservlet</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>DeleteServlet</display-name>
+    <servlet-name>DeleteServlet</servlet-name>
+    <servlet-class>controller.DeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteServlet</servlet-name>
+    <url-pattern>/deleteservlet</url-pattern>
+  </servlet-mapping>
 </web-app>

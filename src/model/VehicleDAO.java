@@ -2,7 +2,9 @@ package model;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import com.mysql.jdbc.Driver;
+
 import java.util.*;
 //import config.Config;
 
@@ -198,6 +200,22 @@ public class VehicleDAO {
 		 return vs;
 	}
 	
+	public static int deleteVehicle(int id)
+	{
+		
+		String queryText = "DELETE FROM user WHERE id = ?";
+		PreparedStatement ps = VehicleDAO.getPreparedStatement(queryText);
+		try
+		{
+			ps.setInt(1, id);
+		}
+		catch(Exception ex)
+		{
+			VehicleDAO.handleException(ex);
+		}
+		VehicleDAO.executeUpdate(ps);
+		return 1;
+	}
 	
 	
 	public static ArrayList<Vehicle> getAll()
